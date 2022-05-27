@@ -4,7 +4,7 @@
 #include<ctype.h>
 
 #define LENGTH 251
-//check
+//Test
 
 int get_input (char *question, char *input);
 char* cutter(char *input);
