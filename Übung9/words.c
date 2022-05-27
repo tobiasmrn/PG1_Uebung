@@ -3,7 +3,7 @@
 #include<strings.h>
 #include<ctype.h>
 
-#define LENGTH 251//Test
+#define LENGTH 251
 
 int get_input (char *question, char *input);
 char* cutter(char *input);

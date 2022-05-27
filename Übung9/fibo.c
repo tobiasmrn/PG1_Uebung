@@ -11,7 +11,6 @@ void normal();
 void rekursion();
 long fib_rek(int number);
 
-//Test
 
 int main (){
     int choose = 5;
