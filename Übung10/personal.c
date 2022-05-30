@@ -14,11 +14,12 @@ int get_auswahl(char* question);
 
 int main (){
     int auswahl;
-    person **personenkartei;
+    person *personenkartei[100];
     auswahl = get_auswahl("Was wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
     switch(auswahl){
         case 1:
-            add_person();
+            *(personenkartei+ 0) = add_person();
+            printf("Neue Person bei %p\n", (personenkartei + 0));
             break;
         case 2:
             print_all();
