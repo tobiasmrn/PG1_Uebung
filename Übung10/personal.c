@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 typedef struct{
     char name[50];
     float gehalt;
     int personalnummer;
 }person;
 
-
+person* add_person();
+int print_all();
+int delete_person();
+int get_auswahl(char* question);
 
 int main (){
     int auswahl;
@@ -17,6 +18,18 @@ int main (){
     auswahl = get_auswahl("Was wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
     switch(auswahl){
         case 1:
+            add_person();
+            break;
+        case 2:
+            print_all();
+            break;
+        case 3:
+            delete_person();
+            break;
+        default:
+            printf("Unerwarteter Fehler!\n");
+            exit(1);
+            break;
     }
     return 0;
 }
@@ -47,8 +60,18 @@ int get_auswahl (char* question){
     return auswahl;
 }
 
-int add_person(){
-    return 0;
+person* add_person(){
+    person *new_person;
+    new_person = (person*) malloc(sizeof(person));
+    printf("Bitte geben Sie den Namen der neuen Person ein: ");
+    scanf("%s", &new_person->name);
+    printf("Bitte geben Sie das Gehalt der neuen Person ein: ");
+    scanf("%f", &new_person->gehalt);
+    printf("Bitte geben Sie die Personalnummer der neuen Person ein: ");
+    scanf("%d", &new_person->personalnummer);
+    printf("Die neue Person wurde angelegt.\n");
+    printf("%s\n", new_person->name);
+    return new_person;
 }
 
 int print_all(){
