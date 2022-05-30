@@ -7,14 +7,14 @@ typedef struct{
     char name[50];
     float gehalt;
     int personalnummer;
-}personenkartei;
+}person;
 
 
 
 int main (){
     int auswahl;
-    personenkartei *folder [1];
-    auswahl = get_auswahl("Was wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n", &auswahl);
+    person **personenkartei;
+    auswahl = get_auswahl("Was wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
     switch(auswahl){
         case 1:
     }
