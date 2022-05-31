@@ -14,23 +14,27 @@ int get_auswahl(char* question);
 
 int main (){
     int auswahl;
+    int aktuell = 0;
     person *personenkartei[100];
-    auswahl = get_auswahl("Was wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
-    switch(auswahl){
-        case 1:
-            *(personenkartei+ 0) = add_person();
-            printf("Neue Person bei %p\n", (personenkartei + 0));
-            break;
-        case 2:
-            print_all();
-            break;
-        case 3:
-            delete_person();
-            break;
-        default:
-            printf("Unerwarteter Fehler!\n");
-            exit(1);
-            break;
+    while(1){
+        auswahl = get_auswahl("Was wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
+        switch(auswahl){
+            case 1:
+                *(personenkartei + aktuell) = add_person();
+                aktuell++;
+                printf("Neue Person bei %p\n", (personenkartei + 0));
+                break;
+            case 2:
+                print_all();
+                break;
+            case 3:
+                delete_person();
+                break;
+            default:
+                printf("Unerwarteter Fehler!\n");
+                exit(1);
+                break;
+        }
     }
     return 0;
 }
@@ -71,7 +75,6 @@ person* add_person(){
     printf("Bitte geben Sie die Personalnummer der neuen Person ein: ");
     scanf("%d", &new_person->personalnummer);
     printf("Die neue Person wurde angelegt.\n");
-    printf("%s\n", new_person->name);
     return new_person;
 }
 
