@@ -48,20 +48,20 @@ int get_auswahl (char* question){
     scanf("%d", &auswahl);
     switch(auswahl){
         case 1:
-            printf("Sie haben gewaehlt, dass Sie eine neue Person anlegen wollen.\n");
+            printf("\nSie haben gewaehlt, dass Sie eine neue Person anlegen wollen.\n");
             break;
         case 2:
-            printf("Sie haben gewaehlt, dass Sie alle Personen ausgeben wollen.\n");
+            printf("\nSie haben gewaehlt, dass Sie alle Personen ausgeben wollen.\n");
             break;
         case 3:
-            printf("Sie haben gewaehlt, dass Sie eine Person loeschen wollen.\n");
+            printf("\nSie haben gewaehlt, dass Sie eine Person loeschen wollen.\n");
             break;
         case 4:
-            printf("Sie haben gewaehlt, dass Sie das Programm beenden wollen.\n");
+            printf("\nSie haben gewaehlt, dass Sie das Programm beenden wollen.\n");
             exit(0);
             break;
         default:
-            printf("Sie haben eine ungueltige Eingabe gemacht.\n");
+            printf("\nSie haben eine ungueltige Eingabe gemacht.\n");
             exit(1);
             break;
     }
@@ -77,7 +77,7 @@ person* add_person(){
     scanf("%f", &new_person->gehalt);
     printf("Bitte geben Sie die Personalnummer der neuen Person ein: ");
     scanf("%d", &new_person->personalnummer);
-    printf("Die neue Person wurde angelegt.\n");
+    printf("\nDie neue Person wurde angelegt.\n");
     return new_person;
 }
 
@@ -94,20 +94,20 @@ int print_all(person* personenkartei[], int aktuell){
 }
 
 int delete_person(person* personenkartei[], int aktuell){
-    printf("Um das auswählen der zu loeschenden Person zu ermoeglichen, wird die Personenliste ausgegeben.\n");
+    printf("\nUm das auswählen der zu loeschenden Person zu ermoeglichen, wird die Personenliste ausgegeben.\n");
     print_all(personenkartei, aktuell);
-    printf("Bitte geben Sie die Nummer der zu loeschenden Person ein: ");
+    printf("\nBitte geben Sie die Nummer der zu loeschenden Person ein: ");
     int loesch_nr;
     scanf("%d", &loesch_nr);
     loesch_nr -= 1;
     if(personenkartei[loesch_nr] != NULL){
         free(personenkartei[loesch_nr]);
         personenkartei[loesch_nr] = NULL;
-        printf("Die Person wurde geloescht.\n");
+        printf("\nDie Person wurde geloescht.\n");
         array_fix(personenkartei, aktuell);
     }
     else{
-        printf("Die Person konnte nicht geloescht werden.\n");
+        printf("\nDie Person konnte nicht geloescht werden.\n");
     }
     return 0;
 }
