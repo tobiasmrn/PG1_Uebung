@@ -8,8 +8,8 @@ typedef struct{
 }person;
 
 person* add_person();
-int print_all();
-int delete_person();
+int print_all(person* personenkartei[], int aktuell);
+int delete_person(person* personenkartei[], int aktuell);
 int get_auswahl(char* question);
 
 int main (){
@@ -28,7 +28,7 @@ int main (){
                 print_all(personenkartei, aktuell);
                 break;
             case 3:
-                delete_person();
+                delete_person(personenkartei, aktuell);
                 break;
             default:
                 printf("Unerwarteter Fehler!\n");
@@ -80,14 +80,29 @@ person* add_person(){
 
 int print_all(person* personenkartei[], int aktuell){
     for(int i = 0; i < aktuell + 1; i++){
-        printf("Personenkarte Nr. %d\n", i);
-        printf("Name: %s\n", personenkartei[i]->name);
-        printf("Gehalt: %f\n", personenkartei[i]->gehalt);
-        printf("Personalnummer: %d\n", personenkartei[i]->personalnummer);
+        if(personenkartei[i] != NULL){
+            printf("Personenkarte Nr. %d\n", i);
+            printf("Name: %s\n", personenkartei[i]->name);
+            printf("Gehalt: %f\n", personenkartei[i]->gehalt);
+            printf("Personalnummer: %d\n", personenkartei[i]->personalnummer);
+        }
     }
     return 0;
 }
 
-int delete_person(){
+int delete_person(person* personenkartei[], int aktuell){
+    printf("Um das auswählen der zu loeschenden Person zu ermoeglichen, wird die Personenliste ausgegeben.\n");
+    print_all(personenkartei, aktuell);
+    printf("Bitte geben Sie die Nummer der zu loeschenden Person ein: ");
+    int loesch_nr;
+    scanf("%d", &loesch_nr);
+    if(personenkartei[loesch_nr] != NULL){
+        free(personenkartei[loesch_nr]);
+        personenkartei[loesch_nr] = NULL;
+        printf("Die Person wurde geloescht.\n");
+    }
+    else{
+        printf("Die Person konnte nicht geloescht werden.\n");
+    }
     return 0;
 }
