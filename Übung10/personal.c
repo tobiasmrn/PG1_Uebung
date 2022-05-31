@@ -79,7 +79,7 @@ person* add_person(){
 }
 
 int print_all(person* personenkartei[], int aktuell){
-    for(int i = 0; i < aktuell + 1; i++){
+    for(int i = 0; i < aktuell; i++){
         if(personenkartei[i] != NULL){
             printf("Personenkarte Nr. %d\n", i);
             printf("Name: %s\n", personenkartei[i]->name);
