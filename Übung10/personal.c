@@ -30,6 +30,7 @@ int main (){
                 break;
             case 3:
                 delete_person(personenkartei, aktuell);
+                aktuell -= 1;
                 break;
             default:
                 printf("Unerwarteter Fehler!\n");
@@ -104,7 +105,6 @@ int delete_person(person* personenkartei[], int aktuell){
         personenkartei[loesch_nr] = NULL;
         printf("Die Person wurde geloescht.\n");
         array_fix(personenkartei, aktuell);
-        aktuell -= 1;
     }
     else{
         printf("Die Person konnte nicht geloescht werden.\n");
