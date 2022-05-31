@@ -11,6 +11,7 @@ person* add_person();
 int print_all(person* personenkartei[], int aktuell);
 int delete_person(person* personenkartei[], int aktuell);
 int get_auswahl(char* question);
+int array_fix(person* personenkartei[], int aktuell);
 
 int main (){
     int auswahl;
@@ -82,7 +83,7 @@ person* add_person(){
 int print_all(person* personenkartei[], int aktuell){
     for(int i = 0; i < aktuell; i++){
         if(personenkartei[i] != NULL){
-            printf("\nPersonenkarte Nr. %d\n", i);
+            printf("\nPersonenkarte Nr. %d\n", i + 1);
             printf("Name: %s\n", personenkartei[i]->name);
             printf("Gehalt: %.2f Euro\n", personenkartei[i]->gehalt);
             printf("Personalnummer: %d\n", personenkartei[i]->personalnummer);
@@ -97,13 +98,27 @@ int delete_person(person* personenkartei[], int aktuell){
     printf("Bitte geben Sie die Nummer der zu loeschenden Person ein: ");
     int loesch_nr;
     scanf("%d", &loesch_nr);
+    loesch_nr -= 1;
     if(personenkartei[loesch_nr] != NULL){
         free(personenkartei[loesch_nr]);
         personenkartei[loesch_nr] = NULL;
         printf("Die Person wurde geloescht.\n");
+        array_fix(personenkartei, aktuell);
+        aktuell -= 1;
     }
     else{
         printf("Die Person konnte nicht geloescht werden.\n");
+    }
+    return 0;
+}
+
+int array_fix(person* personenkartei[], int aktuell){
+    for(int i = 0; i < aktuell; i++){
+        if(personenkartei[i] == NULL){
+            for(int j = i; j < aktuell; j++){
+                personenkartei[j] = personenkartei[j+1];
+            }
+        }
     }
     return 0;
 }
