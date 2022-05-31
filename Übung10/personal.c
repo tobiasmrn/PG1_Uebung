@@ -25,7 +25,7 @@ int main (){
                 printf("Neue Person bei %p\n", (personenkartei + 0));
                 break;
             case 2:
-                print_all();
+                print_all(personenkartei, aktuell);
                 break;
             case 3:
                 delete_person();
@@ -78,7 +78,13 @@ person* add_person(){
     return new_person;
 }
 
-int print_all(){
+int print_all(person* personenkartei[], int aktuell){
+    for(int i = 0; i < aktuell + 1; i++){
+        printf("Personenkarte Nr. %d\n", i);
+        printf("Name: %s\n", personenkartei[i]->name);
+        printf("Gehalt: %f\n", personenkartei[i]->gehalt);
+        printf("Personalnummer: %d\n", personenkartei[i]->personalnummer);
+    }
     return 0;
 }
 
