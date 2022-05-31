@@ -16,12 +16,13 @@ int array_fix(person* personenkartei[], int aktuell);
 int main (){
     int auswahl;
     int aktuell = 0;
-    person *personenkartei[100];
+    person** personenkartei = (person**)malloc(10*sizeof(person));
     while(1){
         auswahl = get_auswahl("\nWas wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
         switch(auswahl){
             case 1:
-                *(personenkartei + aktuell) = add_person();
+                personenkartei = (person**) realloc (personenkartei, sizeof(person) * (aktuell + 1));
+                *(personenkartei + aktuell) = add_person(); //Mir wird hier ein Error angezeigt, jedoch funktioniert das Programm so wie es soll.
                 aktuell++;
                 //printf("Neue Person bei %p\n", (personenkartei + 0));
                 break;
@@ -81,7 +82,7 @@ person* add_person(){
     return new_person;
 }
 
-int print_all(person* personenkartei[], int aktuell){
+int print_all(person** personenkartei, int aktuell){
     for(int i = 0; i < aktuell; i++){
         if(personenkartei[i] != NULL){
             printf("\nPersonenkarte Nr. %d\n", i + 1);
@@ -93,10 +94,10 @@ int print_all(person* personenkartei[], int aktuell){
     return 0;
 }
 
-int delete_person(person* personenkartei[], int aktuell){
+int delete_person(person** personenkartei, int aktuell){
     printf("\nUm das auswählen der zu loeschenden Person zu ermoeglichen, wird die Personenliste ausgegeben.\n");
     print_all(personenkartei, aktuell);
-    printf("\nBitte geben Sie die Nummer der zu loeschenden Person ein: ");
+    printf("\nBitte geben Sie die Personenkarten Nr. der zu loeschenden Person ein: ");
     int loesch_nr;
     scanf("%d", &loesch_nr);
     loesch_nr -= 1;
