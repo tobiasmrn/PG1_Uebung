@@ -17,12 +17,12 @@ int main (){
     int aktuell = 0;
     person *personenkartei[100];
     while(1){
-        auswahl = get_auswahl("Was wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
+        auswahl = get_auswahl("\nWas wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
         switch(auswahl){
             case 1:
                 *(personenkartei + aktuell) = add_person();
                 aktuell++;
-                printf("Neue Person bei %p\n", (personenkartei + 0));
+                //printf("Neue Person bei %p\n", (personenkartei + 0));
                 break;
             case 2:
                 print_all(personenkartei, aktuell);
@@ -81,9 +81,9 @@ person* add_person(){
 int print_all(person* personenkartei[], int aktuell){
     for(int i = 0; i < aktuell; i++){
         if(personenkartei[i] != NULL){
-            printf("Personenkarte Nr. %d\n", i);
+            printf("\nPersonenkarte Nr. %d\n", i);
             printf("Name: %s\n", personenkartei[i]->name);
-            printf("Gehalt: %f\n", personenkartei[i]->gehalt);
+            printf("Gehalt: %.2f Euro\n", personenkartei[i]->gehalt);
             printf("Personalnummer: %d\n", personenkartei[i]->personalnummer);
         }
     }
