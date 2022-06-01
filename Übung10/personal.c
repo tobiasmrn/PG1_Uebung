@@ -122,4 +122,3 @@ int array_fix(person* personenkartei[], int aktuell){
     }
     return 0;
 }
-
