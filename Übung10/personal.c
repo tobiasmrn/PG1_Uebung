@@ -45,7 +45,6 @@ int main (){
 int get_auswahl (char* question){
     int auswahl;
     printf("%s", question);
-    //Test
     scanf("%d", &auswahl);
     switch(auswahl){
         case 1:
