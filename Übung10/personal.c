@@ -22,7 +22,7 @@ int main (){
         switch(auswahl){
             case 1:
                 personenkartei = (person**) realloc (personenkartei, sizeof(person) * (aktuell + 1));
-                *(personenkartei + aktuell) = add_person(); //Mir wird hier ein Error angezeigt, jedoch funktioniert das Programm so wie es soll.
+                *(personenkartei + aktuell) = add_person(); 
                 aktuell++;
                 //printf("Neue Person bei %p\n", (personenkartei + 0));
                 break;
