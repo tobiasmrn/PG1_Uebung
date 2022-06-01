@@ -17,11 +17,19 @@ int main (){
     int auswahl;
     int aktuell = 0;
     person** personenkartei = (person**)malloc(10*sizeof(person));
+    if(personenkartei == NULL){
+        printf("Fehler bei der Speicherallokierung");
+        return 1;
+    }
     while(1){
         auswahl = get_auswahl("\nWas wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
         switch(auswahl){
             case 1:
                 personenkartei = (person**) realloc (personenkartei, sizeof(person) * (aktuell + 1));
+                if(personenkartei == NULL){
+                    printf("Fehler beim Speichern der Personenkartei\n");
+                    exit(1);
+                }
                 *(personenkartei + aktuell) = add_person(); 
                 aktuell++;
                 //printf("Neue Person bei %p\n", (personenkartei + 0));
