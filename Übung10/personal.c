@@ -72,7 +72,7 @@ person* add_person(){
     person *new_person;
     new_person = (person*) malloc(sizeof(person));
     printf("Bitte geben Sie den Namen der neuen Person ein: ");
-    scanf("%50s", &new_person->name);
+    scanf("%49s", &new_person->name);
     printf("Bitte geben Sie das Gehalt der neuen Person ein: ");
     scanf("%f", &new_person->gehalt);
     printf("Bitte geben Sie die Personalnummer der neuen Person ein: ");
