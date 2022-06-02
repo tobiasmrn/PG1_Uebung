@@ -18,7 +18,7 @@ int main (){
     int aktuell = 0;
     person** personenkartei = (person**)malloc(10*sizeof(person));
     if(personenkartei == NULL){
-        printf("Fehler bei der Speicherallokierung");
+        printf("Fehler bei der Speicherallokierung\n");
         return 1;
     }
     while(1){
@@ -130,3 +130,4 @@ int array_fix(person* personenkartei[], int aktuell){
     }
     return 0;
 }
+
