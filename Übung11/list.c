@@ -63,6 +63,10 @@ int get_auswahl (char* question){
 
 void person_anlegen(person* tail){
     person* new_person = (person*)malloc(sizeof(person));
+    if(new_person == NULL){
+        printf("Fehler beim Speichern der neuen Person!\n");
+        exit(1);
+    }
     printf("\nBitte geben Sie den Namen ein: ");
     scanf("%50s", &new_person->name);
     printf("Bitte geben Sie das Gehalt ein: ");
