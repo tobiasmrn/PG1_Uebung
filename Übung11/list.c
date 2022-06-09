@@ -75,6 +75,7 @@ int main(){
         int auswahl = get_auswahl("\nWas wollen Sie machen?\n1. Neue Person anlegen\n2. Personenliste ausgeben\n3. Person löschen\n4. Programm beenden\n");
         switch(auswahl){
             case 1:
+                // Person anlegen
                 person_anlegen(tail);
                 break;
             case 2:
