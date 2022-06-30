@@ -99,7 +99,7 @@ void delete_person(person* head){
     printf("\nBitte geben Sie die Personalnummer ein: ");
     scanf("%d", &personalnummer);
     person* current = head;
-        while(current != NULL){
+        while(current->next != NULL){
             if(current->personalnummer == personalnummer){
                 current->prev->next = current->next;
                 current->next->prev = current->prev;
@@ -109,5 +109,3 @@ void delete_person(person* head){
         }
     printf("\nPerson gelöscht!\n");
 }
-
-
